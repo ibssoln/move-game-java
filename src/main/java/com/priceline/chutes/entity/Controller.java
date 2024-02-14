@@ -30,7 +30,8 @@ public class Controller {
         System.out.println("The winner is: " + winner.getName());
     }
 
-    //NOTE:
+    //NOTE: the algorithm of this spin method's result is closely pertaining to the 'chutes-and-ladders' game. Therefore, moved it to this game controller class,
+    // rather than moving it to the Utility class.
     private int spin(){
         return RANDOM.nextInt(6) + 1;
     }
