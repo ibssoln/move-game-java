@@ -5,6 +5,7 @@ import com.priceline.chutes.entity.BoardSquare;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import static java.util.Map.entry;
@@ -50,5 +51,9 @@ public final class GameConstants {
             .ofNullable(SPECIAL_SQUARES.get(i))
             .orElseGet(BoardSquare::new))
             .collect(Collectors.toList());
+
+    //NOTE: changed the Random private class resource as static, and moved to constant class, since it can be a singleton and be used by many other instances of
+    // different games.
+    public static final Random RANDOM = new Random();
 
 }

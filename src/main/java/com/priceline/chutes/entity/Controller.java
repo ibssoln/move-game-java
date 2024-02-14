@@ -2,12 +2,10 @@ package com.priceline.chutes.entity;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import static com.priceline.chutes.constant.GameConstants.RANDOM;
 import static com.priceline.chutes.util.Utility.print;
 
 public class Controller {
-
-    //NOTE: changed the Random private class resource as static.
-    private static Random random = new Random();
 
     //NOTE: this class stores all game control related functionalities. This class was created to better encapsulate the game execution functions
     // that are only related to the 'chutes-and-ladders' game, in order to achieve a maintainability and extensibility for a later extension of the whole application.
@@ -32,9 +30,9 @@ public class Controller {
         System.out.println("The winner is: " + winner.getName());
     }
 
-    //NOTE: changed the spin() method as static.
-    private static int spin(){
-        return random.nextInt(6) + 1;
+    //NOTE:
+    private int spin(){
+        return RANDOM.nextInt(6) + 1;
     }
 
     //NOTE: This createBasePlayers() method was newly added.
