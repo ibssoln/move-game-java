@@ -1,4 +1,4 @@
-package com.priceline.chutes.entity;
+package com.priceline.chutes.conventionalgame;
 
 public class Player {
 

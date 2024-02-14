@@ -1,16 +1,17 @@
-package com.priceline.chutes.entity;
+package com.priceline.chutes.conventionalgame;
 
+import com.priceline.chutes.framework.Controller;
 import java.util.*;
 import java.util.stream.Collectors;
 import static com.priceline.chutes.constant.GameConstants.RANDOM;
 import static com.priceline.chutes.util.Utility.print;
 
-public class Controller {
+public class ConventionalGameController implements Controller {
 
     //NOTE: this class stores all game control related functionalities. This class was created to better encapsulate the game execution functions
     // that are only related to the 'chutes-and-ladders' game, in order to achieve a maintainability and extensibility for a later extension of the whole application.
 
-    public Controller() {
+    public ConventionalGameController() {
         super();
     }
 

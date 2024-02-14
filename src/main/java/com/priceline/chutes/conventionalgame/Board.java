@@ -1,16 +1,9 @@
-package com.priceline.chutes.entity;
-
-import com.priceline.chutes.entity.BoardSquare;
+package com.priceline.chutes.conventionalgame;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
-import static com.priceline.chutes.constant.GameConstants.SPECIAL_SQUARES;
 import static com.priceline.chutes.constant.GameConstants.SQUARES;
-import static java.util.Map.entry;
 
 public class Board {
 

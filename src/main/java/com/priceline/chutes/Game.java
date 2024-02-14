@@ -1,10 +1,7 @@
 package com.priceline.chutes;
 
-import com.priceline.chutes.entity.Controller;
-import com.priceline.chutes.entity.Player;
-import java.util.*;
-import java.util.stream.Collectors;
-import static com.priceline.chutes.util.Utility.print;
+import com.priceline.chutes.conventionalgame.ConventionalGameController;
+import com.priceline.chutes.framework.Controller;
 
 public class Game {
 
@@ -12,10 +9,10 @@ public class Game {
     //have been moved to the new class named 'Controller.java'.
 
     public static void main(String[] args) {
+        Controller game;
         try {
-
-            Controller gameController = new Controller();
-            gameController.initiateGame(args);
+            game = new ConventionalGameController();
+            game.initiateGame(args);
 
         } catch (Exception e) {
             e.printStackTrace();

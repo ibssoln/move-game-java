@@ -1,6 +1,6 @@
 package com.priceline.chutes.constant;
 
-import com.priceline.chutes.entity.BoardSquare;
+import com.priceline.chutes.conventionalgame.BoardSquare;
 
 import java.util.List;
 import java.util.Map;
