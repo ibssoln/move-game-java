@@ -21,5 +21,5 @@ Author: Chloe Bae
 17. In the Game class, added a new determinePlayOrder() method, which uses a recursive run of the self method to find the definite order of play among all players. The one or more tied players are given another opportunities to run the spinner, so that they can determine the distinct order. If there is another tie found in this try, the subset of the tied players do another round running the spinner. This process is recursively processed, until there is no tie among the players.
 18. Created a game controller class (Controller.java) to which all the game execution functions are moved from the Game class. This class was created to better encapsulate the game execution functions that are only related to the 'chutes-and-ladders' game, in order to achieve a maintainability and extensibility for a later extension of the whole application.
 19. Created a util package and Utility class to store a static non-state functions to be used as helper methods.
-20. For extensibility, created a game controller interface to be implemented by a variation of the concreate game classes.
+20. For extensibility, created a game controller interface to be implemented by a variation of the concrete game classes.
 21.
