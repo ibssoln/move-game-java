@@ -57,8 +57,8 @@ public class Game {
 
             //NOTE: Below is a new section of code for determining the play order of the players.
             players = determinePlayOrder(players);
-            print("---------");
-            players.stream().forEach(p -> print(p.getName()));
+            print("--------- final order -------");
+            players.stream().forEach(p -> print("FINAL "+p.getName()));
 
 //            Player winner = new Game().playGame(players);
 //            System.out.println("The winner is: " + winner.getName());
@@ -85,29 +85,28 @@ public class Game {
 
     //NOTE: This determinePlayOrder() method was newly added.
     public static List<Player> determinePlayOrder(List<Player> players){
-        Map<Integer, List<Player>> orderCountMap = new HashMap<>();
+        Map<Integer, List<Player>> spinResults = new HashMap<>();
+        //1. each player spins and get their individual number.
         players.stream().forEach(player -> {
             int spinVal = spin();
-            if(Objects.nonNull(orderCountMap.get(spinVal)) && orderCountMap.get(spinVal).size()>0){
-                // the tied players spin again and determine their order.
-
+            print("name "+player.getName()+" "+spinVal);
+            if(Objects.nonNull(spinResults.get(spinVal))){
+                spinResults.get(spinVal).add(player);
             }else{
-                orderCountMap.put(spinVal, new ArrayList<>(List.of(player)));
-                print("player "+player.getName()+" "+spinVal);
+                spinResults.put(spinVal, new ArrayList<>(List.of(player)));
             }
         });
-        List<Player> orderedList = orderCountMap.entrySet()
-                .stream()
+        //2. check the tied players, and determine the orders among them.
+        spinResults.entrySet().stream().forEach(entry -> {
+            if (entry.getValue().size() > 1) {
+                List<Player> newOrdered = determinePlayOrder(entry.getValue()); // NOTE: recursive call
+                entry.setValue(newOrdered);
+            }
+        });
+        return spinResults.entrySet().stream()
                 .sorted(Map.Entry.<Integer, List<Player>>comparingByKey().reversed())
-                .map(entry -> entry.getValue().get(0))
+                .flatMap(entry -> entry.getValue().stream())
                 .collect(Collectors.toList());
-//        TreeMap<Long, List<Player>> sorted = new TreeMap<>(orderCountMap);
-//        List<Employee> ees = orderCountMap.entrySet()
-//                .stream()
-//                .sorted(Map.Entry.<Long, List<Player>>comparingByKey())
-//                .map(e-> e.getValue())
-//                .collect(Collectors.toList());
-        return orderedList;
     }
 
     public static void print(Object o){
