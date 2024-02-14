@@ -1,4 +1,6 @@
-package com.priceline.chutes;
+package com.priceline.chutes.entity;
+
+import com.priceline.chutes.entity.BoardSquare;
 
 import java.util.List;
 import java.util.Map;
@@ -9,9 +11,14 @@ import static java.util.Map.entry;
 
 public class Board {
 
+    //NOTE: Created an 'entity' package to better organize the classes.
+    // The package 'entity' archives all supporting entity classes, while the main class 'Game' remains at the root directory.
+
     List<BoardSquare> squares;
 
-    Board() {
+    //NOTE: In each class, created a base constructor and set the modifier to be 'public'
+    // so that an external class can instantiate this target class.
+    public Board() {
         squares = java.util.stream.IntStream.rangeClosed(1, 100)
                 .mapToObj(i -> Optional
                         .ofNullable(specialSquares.get(i))

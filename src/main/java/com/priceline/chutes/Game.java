@@ -1,8 +1,15 @@
 package com.priceline.chutes;
 
+import com.priceline.chutes.entity.Board;
+import com.priceline.chutes.entity.BoardSquare;
+import com.priceline.chutes.entity.Player;
+
 import java.util.Random;
 
 public class Game {
+
+    //NOTE: Created an 'entity' package to better organize the classes.
+    // The package 'entity' archives all supporting entity classes, while the main class 'Game' remains at the root directory.
 
     private Random random = new Random();
     Player dijkstra = new Player("dijkstra");
