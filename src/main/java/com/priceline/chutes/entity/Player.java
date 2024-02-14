@@ -11,9 +11,6 @@ public class Player {
     private String name;
     private int position = 0;
 
-    //NOTE: added a play order spin result property and its getter/setter.
-    private int playOrderSpin;
-
     //NOTE: In each class, created a base constructor and set the modifier to be 'public'
     // so that an external class can instantiate this target class.
     private Player(){ // NOTE: By setting this base constructor as 'private', we can block the case where a player is instantiated without a name.
@@ -44,15 +41,6 @@ public class Player {
 
     public void setPosition(int position) {
         this.position = position;
-    }
-
-    //NOTE: added a play order spin result property and its getter/setter.
-    public int getPlayOrderSpin() {
-        return playOrderSpin;
-    }
-
-    public void setPlayOrderSpin(int playOrder) {
-        this.playOrderSpin = playOrderSpin;
     }
 
 }

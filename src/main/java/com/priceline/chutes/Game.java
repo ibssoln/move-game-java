@@ -57,6 +57,8 @@ public class Game {
 
             //NOTE: Below is a new section of code for determining the play order of the players.
             players = determinePlayOrder(players);
+            print("---------");
+            players.stream().forEach(p -> print(p.getName()));
 
 //            Player winner = new Game().playGame(players);
 //            System.out.println("The winner is: " + winner.getName());
@@ -78,13 +80,34 @@ public class Game {
         return Arrays.stream(args).map(p -> new Player(p)).collect(Collectors.toList());
     }
 
+    //NOTE:
+//    public static List<Player> deter
+
     //NOTE: This determinePlayOrder() method was newly added.
     public static List<Player> determinePlayOrder(List<Player> players){
+        Map<Integer, List<Player>> orderCountMap = new HashMap<>();
+        players.stream().forEach(player -> {
+            int spinVal = spin();
+            if(Objects.nonNull(orderCountMap.get(spinVal)) && orderCountMap.get(spinVal).size()>0){
+                // the tied players spin again and determine their order.
 
-//            for(Player p: players){
-//                print(p.getName()+" "+p.getPlayOrderSpin());
-//            }
-        return players;
+            }else{
+                orderCountMap.put(spinVal, new ArrayList<>(List.of(player)));
+                print("player "+player.getName()+" "+spinVal);
+            }
+        });
+        List<Player> orderedList = orderCountMap.entrySet()
+                .stream()
+                .sorted(Map.Entry.<Integer, List<Player>>comparingByKey().reversed())
+                .map(entry -> entry.getValue().get(0))
+                .collect(Collectors.toList());
+//        TreeMap<Long, List<Player>> sorted = new TreeMap<>(orderCountMap);
+//        List<Employee> ees = orderCountMap.entrySet()
+//                .stream()
+//                .sorted(Map.Entry.<Long, List<Player>>comparingByKey())
+//                .map(e-> e.getValue())
+//                .collect(Collectors.toList());
+        return orderedList;
     }
 
     public static void print(Object o){
