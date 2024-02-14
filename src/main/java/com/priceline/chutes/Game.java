@@ -53,15 +53,17 @@ public class Game {
         try {
             //NOTE: Below is a new section of code for processing the main method's parameters (args),
             // to accept a variable number (2 ~4) of players with their names. Based on the players' information, the players instances are created.
+            print("--- Let's set the players!");
             List<Player> players = createBasePlayers(args);
 
             //NOTE: Below is a new section of code for determining the play order of the players.
+            print("--- Let's determine the play order!");
             players = determinePlayOrder(players);
-            print("--------- final order -------");
-            players.stream().forEach(p -> print("FINAL "+p.getName()));
+            print("The play order : "+ players.stream().map(player -> player.getName()).collect(Collectors.joining(", ")).toString());
 
-//            Player winner = new Game().playGame(players);
-//            System.out.println("The winner is: " + winner.getName());
+            print("--- Let's play the game!");
+            Player winner = new Game().playGame(players);
+            System.out.println("The winner is: " + winner.getName());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -80,16 +82,14 @@ public class Game {
         return Arrays.stream(args).map(p -> new Player(p)).collect(Collectors.toList());
     }
 
-    //NOTE:
-//    public static List<Player> deter
-
     //NOTE: This determinePlayOrder() method was newly added.
+    //this method uses a recursive run of the self method to find the definite order of play among all players.
     public static List<Player> determinePlayOrder(List<Player> players){
         Map<Integer, List<Player>> spinResults = new HashMap<>();
         //1. each player spins and get their individual number.
         players.stream().forEach(player -> {
             int spinVal = spin();
-            print("name "+player.getName()+" "+spinVal);
+            print("> player name: "+player.getName()+", spin result: "+spinVal);
             if(Objects.nonNull(spinResults.get(spinVal))){
                 spinResults.get(spinVal).add(player);
             }else{
@@ -99,6 +99,7 @@ public class Game {
         //2. check the tied players, and determine the orders among them.
         spinResults.entrySet().stream().forEach(entry -> {
             if (entry.getValue().size() > 1) {
+                print("> tie found! replay among them.");
                 List<Player> newOrdered = determinePlayOrder(entry.getValue()); // NOTE: recursive call
                 entry.setValue(newOrdered);
             }
