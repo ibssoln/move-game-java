@@ -3,7 +3,6 @@ package com.priceline.chutes;
 import com.priceline.chutes.entity.Board;
 import com.priceline.chutes.entity.BoardSquare;
 import com.priceline.chutes.entity.Player;
-
 import java.util.Random;
 
 public class Game {
@@ -52,4 +51,5 @@ public class Game {
             e.printStackTrace();
         }
     }
+
 }

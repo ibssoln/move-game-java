@@ -8,6 +8,7 @@ public class BoardSquare {
     //NOTE: To achieve a better 'encapsulation' of properties in the classes, explicitly set the class 'properties'
     // to be 'private', and added missing accessors (getters and setters) for those properties
     // so that the properties can be accessed by other object via the accessor methods.
+
     private boolean isChute;
     private boolean isLadder;
     private int numberSquaresToSkip;
@@ -23,12 +24,8 @@ public class BoardSquare {
         this.numberSquaresToSkip = numberSquaresToSkip;
     }
 
-    //NOTE: To achieve a better 'encapsulation' of properties in the classes, explicitly set the class 'properties'
-    // to be 'private', and added missing accessors (getters and setters) for those properties
-    // so that the properties can be accessed by other object via the accessor methods.
-
     //NOTE: the following getters and setters can be also useful for the extensibility and scalability of the application.
-    // Often, unit tests can benefit from all types of 'getters and setters' provided for the properties, to test different use-cases extensively.
+    // Often, unit tests can benefit from the 'getters and setters' provided for the properties, to test different use-cases extensively.
     // Also, as the application grows, there arises more use-cases where we need to access the properties via accessor methods.
 
     public boolean isChute() {
