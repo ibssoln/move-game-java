@@ -19,7 +19,8 @@ public class Game {
                 int spinResult = spin();
                 int nextPosition = currentPlayer.getPosition() + spinResult;
                 if (nextPosition > 100){
-                    break;
+                    //NOTE: the 'break' statement below was a bug. I have changed it to 'continue' to fix the logical error.
+                    continue;
                 }
                 BoardSquare nextSquare = board.getSquareAtPosition(nextPosition);
                 nextPosition += nextSquare.getNumberSquaresToSkip();
